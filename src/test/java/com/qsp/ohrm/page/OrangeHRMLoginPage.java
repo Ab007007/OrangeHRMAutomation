@@ -29,6 +29,8 @@ public class OrangeHRMLoginPage {
 	WebElement invalidErrorMsg;
 	
 	
+	
+	
 	public void validateErrorMessage(){
 		String actualError = invalidErrorMsg.getText();
 		

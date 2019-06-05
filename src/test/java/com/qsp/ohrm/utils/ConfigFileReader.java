@@ -72,4 +72,19 @@ public class ConfigFileReader {
 		else throw new RuntimeException("password not specified in the Configuration.properties file.");
 
 	}
+	public String getFirstName() {
+		String firstname = properties.getProperty("FirstName");
+		if(firstname!= null) return firstname;
+		else throw new RuntimeException("FirstName is not specified in the config file");
+	}
+	public String getLastName() {
+		String lastname = properties.getProperty("LastName");
+		if(lastname!=null) return lastname;
+		else throw new RuntimeException("Lastname is not specifed in the config file");
+	}
+	public String getemployeeID() {
+		String employeeID = properties.getProperty("employeeID");
+		if(employeeID!=null) return employeeID;
+		else throw new RuntimeException("The employeeID is not specified in the config file");
+	}
 }

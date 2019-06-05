@@ -27,6 +27,12 @@ public class OrangeDashboardPage {
 	@FindBy(xpath="//h1[text()='Dashboard']")
 	WebElement elementDashboard;
 	
+	@FindBy(id="menu_pim_viewPimModule")
+	WebElement PIMLink;
+	
+	@FindBy(id="menu_pim_addEmployee")
+	WebElement addemployeeLink;
+	
 	
 	public void clickOnWelcomeLink(){
 		Log.info("clicking on welcome link");
@@ -47,6 +53,11 @@ public class OrangeDashboardPage {
 		PageFactory.initElements(driver, this);
 		this.driver = driver;
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void clickonPIM(WebDriver driver) {
+		PIMLink.click();
+		
 	}
 	
 	public OrangeDashboardPage(WebDriver driver,ExtentTest test)
