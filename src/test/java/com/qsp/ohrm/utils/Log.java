@@ -57,7 +57,8 @@ public class Log {
 		reports.flush();
 		try {
 			bw.close();
-		} catch (IOException e) {
+		} catch (IOException e) 
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

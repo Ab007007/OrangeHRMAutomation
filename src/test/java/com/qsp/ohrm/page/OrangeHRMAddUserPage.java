@@ -8,9 +8,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qsp.ohrm.utils.DriverUtils;
 import com.qsp.ohrm.utils.Log;
@@ -43,6 +46,26 @@ public class OrangeHRMAddUserPage {
 	
 	@FindBy(xpath="//div[@class='message success fadable'")
 	WebElement toastMessage;
+	
+	@FindBy(id="btnAdd")
+	WebElement addbtn;
+	
+	@FindBy(id="menu_admin_viewAdminModule")
+	WebElement adminele;
+	
+	@FindBy(id="menu_admin_UserManagement")
+	WebElement usrmgmt;
+	
+	@FindBy(id="menu_admin_viewSystemUsers")
+	WebElement users;
+	
+	@FindBy(id="searchSystemUser_userName")
+	WebElement usertbox;
+	
+	@FindBy(id="searchBtn")
+	WebElement searchbtn;
+	
+	
 	
 	
 	public void validateToastMessage(){
@@ -80,6 +103,11 @@ public class OrangeHRMAddUserPage {
 		Log.info("selecting value from dropdown");
 		DriverUtils.selectDropDownItem(userRoleDropDown, "byVisibleText", text);
 	}
+	public void selectRoleByIndex(String type, String value)
+	{
+		Log.info("selecting the Status" + value);
+		DriverUtils.selectDropDownItem(userStatus, type, value);
+	}
 	
 	public void enterEmployeeName(String name){
 		Log.info("Enter User NAme" + name);
@@ -101,7 +129,7 @@ public class OrangeHRMAddUserPage {
 	public void enterPassword(String name){
 		Log.info("Enter Password" + name);
 		userPassword.sendKeys(name);
-		DriverUtils.waitForChangeInText(passwordStrength, "Strong");
+	//	DriverUtils.waitForChangeInText(passwordStrength, "Strong");
 	}
 	
 	public void confirmPassword(String name){
@@ -121,6 +149,36 @@ public class OrangeHRMAddUserPage {
 		PageFactory.initElements(driver, this);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+	public void clickAddUser()
+	{
+		DriverUtils.getVisibleElement(driver, addbtn);
+		addbtn.click();
+	}
+
+	public void clickadminUseradmin()
+	{
+		Log.info("Mousehover on Adminstrator, UserAdminstrator");
+		DriverUtils.getVisibleElement(driver, adminele);
+		DriverUtils.moveMouse(adminele);
+		DriverUtils.getVisibleElement(driver, usrmgmt);
+		DriverUtils.moveMouse(usrmgmt);
+	}
+	public void clickusers()
+	{
+		Log.info("Click on Users link");
+		DriverUtils.getVisibleElement(driver, users);
+		users.click();
+	}
+	public void enterValueToSearchUser(String name){
+		Log.info("Enter User Name for searching user" + name);
+		DriverUtils.getVisibleElement(driver, usertbox);
+		usertbox.sendKeys(name);
+	}
+	public void clickSearchButton()
+	{
+		Log.info("Click on Search Button");
+		DriverUtils.getClickableElement(driver, searchbtn);
+		searchbtn.click();
+	}
+
 }
